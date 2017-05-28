@@ -11,4 +11,10 @@ from utils import (
 class BeerCargoProblem(Problem):
 
     def __init__(self, cargos, trucks, warehouses, initial: FluentState, goal: list):
-        pass
+        self.state_map = initial.pos + initial.neg
+        self.initial_state_TF = encode_state(initial, self.state_map)
+
+        Problem.__init__(self, self.initial_state_TF, goal=goal)
+        self.cargos = cargos
+        self.trucks = trucks
+        self.actions_list = self.get_actions()
