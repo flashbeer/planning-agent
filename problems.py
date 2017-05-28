@@ -3,6 +3,6 @@ from aimacode.search import (
     Node, Problem,
 )
 from aimacode.utils import expr
-from lp_utils import (
+from utils import (
     FluentState, encode_state, decode_state,
 )
