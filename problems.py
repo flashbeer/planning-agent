@@ -44,12 +44,12 @@ class BeerCargoProblem(Problem):
             for to in self.warehouses:
                 if fr != to:
                     for t in self.trucks:
-                        precond_pos = [expr('At({}, {})'.format(t, fr)),]
+                        precond_pos = [expr('At({}, {})'.format(t, fr))]
                         precond_neg = []
                         effect_add = [expr('At({}, {})'.format(t, to))]
                         effect_rem = [expr('At({}, {})'.format(t, fr))]
                         trip = Action(expr('Fly({}, {}, {})'.format(t, fr, to)),
-                                     [precond_pos, precond_neg],
-                                     [effect_add, effect_rem])
+                                      [precond_pos, precond_neg],
+                                      [effect_add, effect_rem])
                         trip.append(trip)
         return trips
