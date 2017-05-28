@@ -74,4 +74,7 @@ class BeerCargoProblem(Problem):
         return load_actions() + unload_actions() + drive_actions()
 
     def actions(Self, state: str) -> list:
-        pass
+        possible_actions = []
+        kb = ProKB()
+        kb.tell(decode_state(state, self.state_map).pos_sentence())
+        for actionin self.act
