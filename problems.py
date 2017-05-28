@@ -39,7 +39,21 @@ class BeerCargoProblem(Problem):
                         loads.append(load)
 
         def unload_actions():
-            pass
+            unloads = []
+            for t in self.trucks:
+                for c in self.cargos:
+                    for w in self.warehouses:
+                        precond_pos = [
+                            expr('At({}, {})'.format(c, w)),
+                            expr('At({}, {})'.format(t, w))
+                        ]
+                        precond_neg = []
+                        effect_add = [expr('In({}, {})'.format(c, t))]
+                        effect_rem = [expr('At({}, {})'.format(c, w))]
+                        unload = Action(expr('Load({}, {}, {})'.format(c, t, w)),
+                                        [precond_pos, precond_neg],
+                                        [effect_add, effect_rem])
+                        unloads.append(unload)
 
         def drive_actions():
             trips = []
