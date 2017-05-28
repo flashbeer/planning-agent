@@ -101,6 +101,10 @@ class BeerCargoProblem(Problem):
         for fluent in old_state.neg:
             if fluent not in action.effect_add:
                 new_state.neg.append(fluent)
+        for fluent in action.effect_rem:
+            if fluent not in new_state.neg:
+                new_state.neg.append(fluent)
+        return encode_state(new_state, self.state_map)
 
 
 
