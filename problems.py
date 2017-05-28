@@ -38,18 +38,21 @@ class BeerCargoProblem(Problem):
                                       [effect_add, effect_rem])
                         loads.append(load)
 
-    def drive_actions(self):
-        trips = []
-        for fr in self.warehouses:
-            for to in self.warehouses:
-                if fr != to:
-                    for t in self.trucks:
-                        precond_pos = [expr('At({}, {})'.format(t, fr))]
-                        precond_neg = []
-                        effect_add = [expr('At({}, {})'.format(t, to))]
-                        effect_rem = [expr('At({}, {})'.format(t, fr))]
-                        trip = Action(expr('Fly({}, {}, {})'.format(t, fr, to)),
-                                      [precond_pos, precond_neg],
-                                      [effect_add, effect_rem])
-                        trip.append(trip)
-        return trips
+        def unload_actions():
+            pass
+
+        def drive_actions():
+            trips = []
+            for fr in self.warehouses:
+                for to in self.warehouses:
+                    if fr != to:
+                        for t in self.trucks:
+                            precond_pos = [expr('At({}, {})'.format(t, fr))]
+                            precond_neg = []
+                            effect_add = [expr('At({}, {})'.format(t, to))]
+                            effect_rem = [expr('At({}, {})'.format(t, fr))]
+                            trip = Action(expr('Fly({}, {}, {})'.format(t, fr, to)),
+                                          [precond_pos, precond_neg],
+                                          [effect_add, effect_rem])
+                            trip.append(trip)
+            return trips
