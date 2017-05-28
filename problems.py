@@ -1,3 +1,4 @@
+from aimacode.logic import PropKB
 from aimacode.planning import Action
 from aimacode.search import (
     Node, Problem,
@@ -38,4 +39,4 @@ class BeerCargoProblem(Problem):
                         loads.append(load)
 
     def drive_actions():
-        pass
+        drives = []
