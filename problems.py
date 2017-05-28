@@ -70,3 +70,8 @@ class BeerCargoProblem(Problem):
                                           [effect_add, effect_rem])
                             trip.append(trip)
             return trips
+
+        return load_actions() + unload_actions() + drive_actions()
+
+    def actions(Self, state: str) -> list:
+        pass
