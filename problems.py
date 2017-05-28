@@ -40,3 +40,9 @@ class BeerCargoProblem(Problem):
 
     def drive_actions():
         drives = []
+        for fr in self.warehouses:
+            for to in self.warehouses:
+                if fr != to:
+                    for p in self.trucks:
+                        pass
+
