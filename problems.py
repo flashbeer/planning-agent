@@ -44,12 +44,12 @@ class BeerCargoProblem(Problem):
                 for c in self.cargos:
                     for w in self.warehouses:
                         precond_pos = [
-                            expr('At({}, {})'.format(c, w)),
+                            expr('In({}, {})'.format(c, t)),
                             expr('At({}, {})'.format(t, w))
                         ]
                         precond_neg = []
-                        effect_add = [expr('In({}, {})'.format(c, t))]
-                        effect_rem = [expr('At({}, {})'.format(c, w))]
+                        effect_add = [expr('At({}, {})'.format(c, w))]
+                        effect_rem = [expr('In({}, {})'.format(c, t))]
                         unload = Action(expr('Load({}, {}, {})'.format(c, t, w)),
                                         [precond_pos, precond_neg],
                                         [effect_add, effect_rem])
