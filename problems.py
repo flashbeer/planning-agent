@@ -44,4 +44,4 @@ class BeerCargoProblem(Problem):
             for to in self.warehouses:
                 if fr != to:
                     for p in self.trucks:
-                        
+                        pass
