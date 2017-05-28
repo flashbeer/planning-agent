@@ -106,6 +106,31 @@ class BeerCargoProblem(Problem):
                 new_state.neg.append(fluent)
         return encode_state(new_state, self.state_map)
 
+    def goal_test(self, state: str) -> bool:
+        kb = PropKB()
+        kb.tell(decode_state(state, self.state_map).pos_sentence())
+        for clause in self.goal:
+            if clause not in kb.clauses:
+                return False
+        return True
+
+    def h_1(self, node: Node):
+        '''False Heuristic
+        '''
+        return 1
+
+    def h_pg_levelsum(self, node: Node):
+        pass
+
+    def h_ignore_preconditions(self, node: Node):
+        count = 0
+        kb = PropKB()
+        kb.tell(decode_state(node.state, self.state_map).pos_sentence())
+        for clause in self.goal:
+            if clause not in kb.clauses:
+                count += 1
+        return count
+
 
 
 
