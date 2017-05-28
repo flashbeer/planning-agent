@@ -18,3 +18,24 @@ class BeerCargoProblem(Problem):
         self.cargos = cargos
         self.trucks = trucks
         self.actions_list = self.get_actions()
+
+    def get_actions(self):
+        def load_actions():
+            loads = []
+            for t in self.trucks:
+                for c in self.cargos:
+                    for w in self.warehouses:
+                        precond_pos = [
+                            expr('At({}, {})'.format(c, w)),
+                            expr('At({}, {})'.format(t, w))
+                        ]
+                        precond_neg = []
+                        effect_add = [expr('In({}, {})'.format(c, t))]
+                        effect_rem = [expr('At({}, {})'.format(c, w))]
+                        load = Action(expr('Load({}, {}, {})'.format(c, t, w)),
+                                      [precond_pos, precond_neg],
+                                      [effect_add, effect_rem])
+                        loads.append(load)
+
+    def drive_actions():
+        pass
