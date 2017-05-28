@@ -134,24 +134,3 @@ class BeerCargoProblem(Problem):
 
 def beer_cargo_p1() -> BeerCargoProblem:
     pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
