@@ -51,5 +51,5 @@ class BeerCargoProblem(Problem):
                         trip = Action(expr('Fly({}, {}, {})'.format(t, fr, to)),
                                      [precond_pos, precond_neg],
                                      [effect_add, effect_rem])
-                        tripa.append(trip)
+                        trip.append(trip)
         return trips
