@@ -38,7 +38,7 @@ class BeerCargoProblem(Problem):
                                       [effect_add, effect_rem])
                         loads.append(load)
 
-    def drive_actions():
+    def drive_actions(self):
         trips = []
         for fr in self.warehouses:
             for to in self.warehouses:
