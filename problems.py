@@ -90,4 +90,5 @@ class BeerCargoProblem(Problem):
         return possible_actions
 
     def result(self, sae: str, action: Action):
-        pass
+        new_state = FluentState([], [])
+        old_state = decode_state(state, self.state_map)
